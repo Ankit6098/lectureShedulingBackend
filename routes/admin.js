@@ -19,7 +19,7 @@ const {
   getLecture,
   deleteLecture,
   getAllLectures,
-} = require("../controllers/lecture_Controller.js");
+} = require("../controllers/lecture_controller.js");
 
 const {
   createUser,
@@ -42,6 +42,7 @@ router.post("/updateLecture/:id", updateLecture);
 router.get("/getLecture/:id", getLecture);
 router.delete("/deleteLecture/:id", deleteLecture);
 router.get("/getAllLectures", getAllLectures);
+
 
 // user
 router.post("/createUser", createUser);
