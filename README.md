@@ -1,7 +1,7 @@
 
 # Ecommerce Api (nodejs & MySQL)
 
-Admin panel built with Node.js, Express, and MongoDB, enabling administrators to efficiently manage courses, lectures, and instructor assignments. It provides a user-friendly interface for adding new courses, creating lectures, and assigning them to instructors, catering to educational institutions and online learning platforms seeking streamlined content management.
+Admin panel built with Node.js, Express, and MongoDB, enabling administrators to efficiently manage courses, lectures, and instructor assignments. Protected by a secure login feature, it provides a user-friendly interface for adding new courses, creating lectures, and assigning them to instructors, catering to educational institutions and online learning platforms seeking streamlined content management.
 ## API
 
 https://lectureshedulingbackend.onrender.com/
