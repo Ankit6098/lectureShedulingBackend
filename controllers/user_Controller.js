@@ -3,10 +3,11 @@ const User = require("../models/User");
 // create
 module.exports.createUser = async (req, res) => {
   try {
-    const { name, email } = req.body;
+    const { name, email, phone } = req.body;
     const user = await User.create({
       name: name,
       email: email,
+      phone: phone,
     });
     if (user) {
       return res.status(200).json({

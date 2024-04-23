@@ -4,19 +4,19 @@ const port = 8000;
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-const db = require('./config/mongoose')
+const db = require("./config/mongoose");
 
 const corsOption = {
   origin: "*",
 };
 
-app.use(cors(corsOption));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(bodyParser.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/uploads', express.static('uploads'));
+app.use("/uploads", express.static("uploads"));
 
 app.use("/", require("./routes/index"));
 
