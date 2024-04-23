@@ -19,7 +19,7 @@ const {
   getLecture,
   deleteLecture,
   getAllLectures,
-} = require("../controllers/lecture_Controller");
+} = require("../controllers/lecture_Controller.js");
 
 const {
   createUser,
