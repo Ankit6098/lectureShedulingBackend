@@ -5,17 +5,23 @@ const Lecture = require("../models/Lecture");
 module.exports.createCourse = async (req, res) => {
   try {
     const { name, level, description } = req.body;
-    const course = await Course.create({
-      name: name,
-      level: level,
-      description: description,
-    });
-    if (course) {
-      return res.status(200).json({
-        message: "Course Created!",
-        course: course,
+    const findCourse = await Course.findOne({ name: name });
+    if (!findCourse) {
+      const course = await Course.create({
+        name: name,
+        level: level,
+        description: description,
       });
+      if (course) {
+        return res.status(200).json({
+          message: "Course Created!",
+          course: course,
+        });
+      }
     }
+    return res.status(400).json({
+      message: "Course already exits with this name",
+    });
   } catch (error) {
     return res.status(402).json({
       message: "Error Course not created!",
@@ -28,9 +34,7 @@ module.exports.createCourse = async (req, res) => {
 module.exports.updateCourse = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
     const { name, level, description } = req.body;
-    console.log(req.body);
     const course = await Course.findByIdAndUpdate(
       id,
       { name, level, description },
