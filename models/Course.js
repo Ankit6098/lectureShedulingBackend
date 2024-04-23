@@ -6,7 +6,7 @@ const coursesSchema = new mongoose.Schema(
     level: { type: String, required: true },
     description: { type: String, required: true },
     // image: { type: String, required: true },
-    lectures: [{ type: mongoose.Schema.Types.ObjectId, ref: "lecture" }],
+    lectures: [{ type: mongoose.Schema.Types.ObjectId, ref: "Lecture" }],
   },
   { timestamps: true }
 );

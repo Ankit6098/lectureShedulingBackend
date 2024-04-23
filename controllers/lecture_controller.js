@@ -112,36 +112,23 @@ module.exports.getLecture = async (req, res) => {
 module.exports.deleteLecture = async (req, res) => {
   try {
     const { id } = req.params;
-
-    // Find the lecture by its ID
     const lecture = await Lecture.findById(id);
-
-    // If lecture doesn't exist, return error
     if (!lecture) {
       return res.status(404).json({
         message: "Lecture not found!",
       });
     }
-
-    // Find the associated course using lecture's courseId
     const course = await Course.findById(lecture.courseId);
-
-    // If course doesn't exist, return error
     if (!course) {
       return res.status(404).json({
         message: "Associated course not found!",
       });
     }
-
-    // Filter out the lecture ID from the course's lectures array
     course.lectures = course.lectures.filter(
       (lectureId) => lectureId.toString() !== id
     );
 
-    // Save the updated course
     await course.save();
-
-    // Delete the lecture
     await Lecture.findByIdAndDelete(id);
 
     // Send success response
@@ -152,6 +139,27 @@ module.exports.deleteLecture = async (req, res) => {
     // If any error occurs, send error response
     return res.status(500).json({
       message: "Error occurred while deleting lecture.",
+      error: error.message,
+    });
+  }
+};
+
+// get all Lectures
+module.exports.getAllLectures = async (req, res) => {
+  try {
+    const lecture = await Lecture.find({});
+    if (lecture) {
+      return res.status(200).json({
+        message: "lectures found!",
+        lecture: lecture,
+      });
+    }
+    return res.status(404).json({
+      message: "lectures not found!",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Error occurred while fetching lectures.",
       error: error.message,
     });
   }

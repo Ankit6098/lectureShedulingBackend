@@ -8,7 +8,7 @@ const lectureSchema = mongoose.Schema(
     courseName: { type: String, required: true },
   },
   {
-    timestamp: true,
+    timestamps: true,
   }
 );
 
